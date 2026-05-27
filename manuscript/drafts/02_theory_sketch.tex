@@ -1,0 +1,223 @@
+% =============================================================================
+% Draft overlay for Sec.~II (theory) -- not part of the submission PDF unless
+% \showdrafttrue is enabled in main.tex.
+% Avoid \label{...} keys that duplicate the main section; use unique keys or
+% omit labels until content moves into sections/02_theory.tex.
+% =============================================================================
+
+
+% =============================================================================
+% 02_theory.tex -- Fundamental theoretical background
+% Derivation of the phase-locked Klein-Gordon dynamics from S_N x U(1)_diag
+% symmetry, democratic mass matrix, and covariant polar decomposition.
+% =============================================================================
+
+\section{Theoretical Background2}
+\label{sec:theory}
+
+\subsection{Symmetry Principle and the Fundamental Lagrangian}
+\label{subsec:lagrangian}
+
+We consider $N$ complex scalar fields $\Phi_j(x^\mu)$ propagating in a flat Friedmann-Lema\^{\i}tre-Robertson-Walker (FLRW) spacetime,
+\begin{equation}
+ds^2 = dt^2 - a(t)^2 d\mathbf{x}^2 = g_{\mu\nu}dx^\mu dx^\nu .
+\end{equation}
+In the local galactic frame one may employ spherical coordinates $(r,\theta,\phi)$, though for clarity we write the flat-space Laplacian as $\nabla^2$ in Cartesian form.
+
+The fundamental premise is that the $N$-field sector possesses a \emph{permutation symmetry} $S_N$ among the field labels, together with a \emph{common} global $U(1)_{\rm diag}$ phase rotation
+\begin{equation}
+\Phi_j \;\longrightarrow\; e^{i\alpha}\,\Phi_{\sigma(j)}, \qquad \sigma\in S_N,\;\; \alpha\in\mathbb{R}.
+\end{equation}
+The diagonal $U(1)$ ensures conservation of total charge, while $S_N$ treats all fields democratically. Under these symmetries, the most general \emph{quadratic} potential is unique: it must be constructed from the only two $S_N$-invariant rank-2 tensors, the identity $\mathbb{I}$ and the democratic matrix $\mathbb{J}$ (with all entries equal to $1$). Writing the Hermitian mass matrix
+\begin{equation}
+\mathcal{M}^2_{jk} = m^2\,\delta_{jk} - \frac{K}{N},
+\end{equation}
+the $S_N\times U(1)_{\rm diag}$-invariant potential reads
+\begin{equation}
+V(\Phi_1,\dots,\Phi_N)
+= \sum_{j,k=1}^N \Phi_j^*\,\mathcal{M}^2_{jk}\,\Phi_k
+= m^2\sum_{j=1}^N |\Phi_j|^2 - \frac{K}{N}\sum_{j,k=1}^N \Phi_j^*\Phi_k .
+\end{equation}
+
+The spectrum of $\mathcal{M}^2$ fixes the physical interpretation. The symmetric eigenvector $\mathbf{v}_0=(1,\dots,1)/\sqrt{N}$ carries eigenvalue $\lambda_0=m^2-K$, while the $N-1$ orthogonal vectors (satisfying $\sum_j v_j=0$) carry eigenvalue $\lambda_\perp=m^2$. Consequently, for $0<K<m^2$ the phase-aligned symmetric mode is the \emph{unique lightest state} of the system. This provides a first-principles reason for phase locking: dynamical evolution naturally relaxes toward the manifold where all fields share a common phase, without imposing a phenomenological cosine coupling by hand.
+
+The total Lagrangian density, including the minimal covariant kinetic term, is therefore
+\begin{equation}
+\mathcal{L}
+= -\sum_{j=1}^N \Big[ g^{\mu\nu}(\partial_\mu\Phi_j^*)(\partial_\nu\Phi_j) + m_j^2|\Phi_j|^2 \Big]
++ \frac{K}{2N}\sum_{j,k=1}^N \big(\Phi_j\Phi_k^* + \Phi_j^*\Phi_k\big) .
+\end{equation}
+The interaction term is nothing but the democratic off-diagonal mass mixing written in a symmetrized basis. It is invariant under the simultaneous global $U(1)$ transformation $\Phi_j\to e^{i\alpha}\Phi_j$, ensuring conservation of the total Noether current
+$J^\mu = i\sum_j(\Phi_j^*\partial^\mu\Phi_j - \Phi_j\partial^\mu\Phi_j^*)$.
+However, it explicitly breaks the \emph{independent} $U(1)$ symmetries $\Phi_j\to e^{i\alpha_j}\Phi_j$, thereby permitting exchange of ``phase charge'' among fields and driving the system toward the lightest symmetric state.
+
+In the polar representation $\Phi_j=\rho_j e^{i\theta_j}$, the democratic mass term manifestly becomes
+\begin{equation}
+\frac{K}{2N}\sum_{j,k}(\Phi_j\Phi_k^*+\text{c.c.})
+= \frac{K}{N}\sum_{j,k=1}^N \rho_j\rho_k\cos(\theta_k-\theta_j),
+\end{equation}
+which is the field-theoretic origin of the Kuramoto-like phase coupling: it emerges from the real part of the democratic overlap $\sum_{j,k}\Phi_j^*\Phi_k$ once the fields are written in amplitude-phase variables.
+
+\subsection{Covariant Equations of Motion}
+\label{subsec:eom}
+
+Varying the action with respect to $\Phi_i^*$ yields the covariant Euler-Lagrange equation
+\begin{equation}
+\frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi_i^*)}\right)
+= \frac{\partial\mathcal{L}}{\partial\Phi_i^*} .
+\end{equation}
+The derivatives are
+\begin{equation}
+\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi_i^*)} = -g^{\mu\nu}\partial_\nu\Phi_i,
+\qquad
+\frac{\partial\mathcal{L}}{\partial\Phi_i^*}
+= -m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k .
+\end{equation}
+Hence
+\begin{equation}
+-\Box\Phi_i = -m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k ,
+\end{equation}
+or, with the canonical sign convention,
+\begin{equation}
+\boxed{
+\Box\Phi_i - m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k = 0
+} .
+\end{equation}
+This is a system of $N$ coupled Klein--Gordon equations whose off-diagonal coupling derives directly from the democratic mass matrix. The Hubble friction is automatically encoded in the covariant d'Alembertian through $\sqrt{-g}=a^3(t)$.
+
+\subsection{Polar Decomposition and Emergent Phase-Locked Dynamics}
+\label{subsec:polar}
+
+We now expose the dynamical content of the democratic mass term by substituting $\Phi_j=\rho_j(x^\mu)e^{i\theta_j(x^\mu)}$. The FLRW d'Alembertian is $\Box = \partial_t^2 + 3H\partial_t - a^{-2}\nabla^2$. Expanding $\Box\Phi_i$ gives
+\begin{equation}
+\Box\Phi_i
+= e^{i\theta_i}\Big[(\Box\rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i\partial_\nu\theta_i)
++ i(2g^{\mu\nu}\partial_\mu\rho_i\partial_\nu\theta_i + \rho_i\Box\theta_i)\Big] .
+\end{equation}
+Using this in the equation of motion and multiplying by $e^{-i\theta_i}$, we obtain
+\begin{multline}
+(\Box\rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i\partial_\nu\theta_i + m_i^2\rho_i)
++ i(2g^{\mu\nu}\partial_\mu\rho_i\partial_\nu\theta_i + \rho_i\Box\theta_i) \\
+- \frac{K}{N}\sum_{k=1}^N \rho_k e^{i(\theta_k-\theta_i)} = 0 .
+\end{multline}
+Separating real and imaginary parts yields the coupled amplitude-phase system.
+
+\subsubsection*{Equation for the Amplitude ($\rho_i$)}
+\begin{equation}
+\Box\rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i\partial_\nu\theta_i + m_i^2\rho_i
+- \frac{K}{N}\sum_{k=1}^N\rho_k\cos(\theta_k-\theta_i) = 0 .
+\end{equation}
+In explicit FLRW components:
+\begin{equation}
+{
+\begin{aligned}
+\ddot{\rho_i} + 3H\dot{\rho_i} - \frac{1}{a^2}\nabla^2\rho_i
+&- \rho_i\!\left(\dot{\theta_i}^2 - \frac{1}{a^2}(\nabla\theta_i)^2\right)
++ m_i^2\rho_i \\
+&= \frac{K}{N}\sum_{k=1}^N\rho_k\cos(\theta_k-\theta_i) .
+\end{aligned}
+} \tag{14} \label{eq:14}
+\end{equation}
+
+\subsubsection*{Equation for the Phase ($\theta_i$)}
+\begin{equation}
+2g^{\mu\nu}\partial_\mu\rho_i\partial_\nu\theta_i + \rho_i\Box\theta_i
+- \frac{K}{N}\sum_{k=1}^N\rho_k\sin(\theta_k-\theta_i) = 0 ,
+\end{equation}
+which expands to
+\begin{equation}
+{
+\begin{aligned}
+2\!\left(\dot{\rho_i}\dot{\theta_i} - \frac{1}{a^2}\nabla\rho_i\!\cdot\!\nabla\theta_i\right)
+&+ \rho_i\!\left(\ddot{\theta_i} + 3H\dot{\theta_i} - \frac{1}{a^2}\nabla^2\theta_i\right) \\
+&= \frac{K}{N}\sum_{k=1}^N\rho_k\sin(\theta_k-\theta_i) .
+\end{aligned}
+} \tag{16} \label{eq:16}
+\end{equation}
+
+Equations~\eqref{eq:14} and \eqref{eq:16} constitute the coupled non-linear PDEs governing the amplitude and phase dynamics. The cosine and sine driving terms are not inserted phenomenologically; they are the polar residue of the democratic mass matrix $\mathcal{M}^2_{jk}$.
+
+\subsection{The Energy-Momentum Tensor and Gravitational Coupling}
+\label{subsec:emt}
+
+Because the democratic interaction originates in a metric-independent potential, the standard metric-variation prescription applies. The symmetric energy-momentum tensor is
+\begin{equation}
+T_{\mu\nu} = \frac{-2}{\sqrt{-g}}\frac{\delta S}{\delta g^{\mu\nu}}
+= \sum_{j=1}^N\big[(\partial_\mu\Phi_j^*)(\partial_\nu\Phi_j)
++ (\partial_\nu\Phi_j^*)(\partial_\mu\Phi_j)\big]
++ g_{\mu\nu}\mathcal{L} .
+\end{equation}
+
+\subsubsection*{Energy density}
+Using $|\dot{\Phi}_j|^2=\dot{\rho}_j^2+\rho_j^2\dot{\theta}_j^2$ and $|\nabla\Phi_j|^2=(\nabla\rho_j)^2+\rho_j^2(\nabla\theta_j)^2$, the comoving energy density $\rho_{\rm tot}\equiv T_{00}$ is
+\begin{equation}
+{
+\begin{aligned}
+\rho_{\rm tot} = \sum_{j=1}^N\Bigg[
+&\dot{\rho}_j^2 + \rho_j^2\dot{\theta}_j^2
++ \frac{1}{a^2}\Big((\nabla\rho_j)^2 + \rho_j^2(\nabla\theta_j)^2\Big) \\
+&- m_j^2\rho_j^2 \Bigg]
++ \frac{K}{N}\sum_{j,k=1}^N\rho_j\rho_k\cos(\theta_k-\theta_j) .
+\end{aligned}
+}
+\end{equation}
+The final cosine term is the gravitational imprint of the democratic phase alignment.
+
+\subsubsection*{Pressure}
+For a homogeneous configuration ($\nabla\to0$), $T_{ij}=g_{ij}\mathcal{L}$ and $p=\mathcal{L}$, giving
+\begin{equation}
+{
+p = -\sum_{j=1}^N\big(\dot{\rho}_j^2 + \rho_j^2\dot{\theta}_j^2 + m_j^2\rho_j^2\big)
+- V_{\rm int} .
+}
+\end{equation}
+Because $-V_{\rm int}$ enters $\rho_{\rm tot}$ and $p$ with the same sign in the homogeneous limit, the interaction contributes coherently to the Friedmann source terms.
+
+\subsubsection*{Modified Friedmann equations}
+With the above sources, the background expansion obeys
+\begin{align}
+H^2 &= \frac{8\pi G}{3}\,\rho_{\rm tot}, \\
+\dot{H} &= -4\pi G\,(\rho_{\rm tot}+p) .
+\end{align}
+The coupling $K$ enters both directly (through the democratic-mass term in $\rho_{\rm tot}$) and indirectly (by steering $\rho_j$ and $\theta_j$ via Eqs.~\eqref{eq:14}--\eqref{eq:16}). Covariant conservation $\nabla_\mu T^{\mu\nu}=0$ holds identically on shell.
+
+\subsection{Continuum Limit and Integral Formulation}
+\label{subsec:continuum}
+
+Taking the thermodynamic limit $N\to\infty$ of the democratic system, we introduce a continuous spectral parameter $\omega$ (e.g. intrinsic frequency or mass) with probability density $g(\omega)$. The discrete democratic sum becomes the double integral
+\begin{equation}
+\begin{aligned}
+V_{\rm int} = -K\iint
+&\rho(x,t;\omega)\,\rho(x,t;\omega') \\
+&\times\cos\!\bigl(\theta(x,t;\omega')-\theta(x,t;\omega)\bigr)\,
+g(\omega)\,g(\omega')\,d\omega\,d\omega' .
+\end{aligned}
+\end{equation}
+Defining the macroscopic order parameter
+\begin{equation}
+R(x,t)\,e^{i\Theta(x,t)}
+= \int \rho(x,t;\omega')\,e^{i\theta(x,t;\omega')}\,g(\omega')\,d\omega' ,
+\end{equation}
+the continuum Euler-Lagrange equations separate into
+
+\textbf{Amplitude Equation:}
+\begin{equation}
+\begin{aligned}
+\ddot{\rho}_\omega + 3H\dot{\rho}_\omega - \frac{\nabla^2\rho_\omega}{a^2}
+&+ \Big(m_\omega^2 - \dot{\theta}_\omega^2 + \frac{(\nabla\theta_\omega)^2}{a^2}\Big)\rho_\omega \\
+&= K\int \rho_{\omega'}\cos(\theta_{\omega'}-\theta_\omega)\,g(\omega')\,d\omega' \\
+&= K R\cos(\Theta-\theta_\omega) .
+\end{aligned}
+\end{equation}
+
+\textbf{Phase Equation:}
+\begin{equation}
+\begin{aligned}
+\rho_\omega\Big(\ddot{\theta}_\omega + 3H\dot{\theta}_\omega - \frac{\nabla^2\theta_\omega}{a^2}\Big)
+&+ 2\Big(\dot{\rho}_\omega\dot{\theta}_\omega - \frac{\nabla\rho_\omega\!\cdot\!\nabla\theta_\omega}{a^2}\Big) \\
+&= K\int \rho_{\omega'}\sin(\theta_{\omega'}-\theta_\omega)\,g(\omega')\,d\omega' \\
+&= K R\sin(\Theta-\theta_\omega) .
+\end{aligned}
+\end{equation}
+
+This mean-field kinetic framework treats the galactic halo as an infinite-dimensional synchronized fluid whose coherence originates, at the microscopic level, from the $S_N$-democratic mass matrix.

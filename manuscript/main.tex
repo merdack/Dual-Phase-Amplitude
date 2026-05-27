@@ -1,0 +1,52 @@
+% =============================================================================
+% main.tex -- Master file for the manuscript
+% -----------------------------------------------------------------------------
+% This file is intentionally short: it loads the document class, the preamble
+% files, the metadata block, every section, and the appendices.  Real content
+% lives in the individual files under sections/ and appendices/ -- please edit
+% those, not this file, when working on a particular part of the paper.
+%
+% Build instructions (any of the following from the repository root):
+%   - "make"                           (POSIX with GNU make)
+%   - "scripts\build.ps1"              (Windows / PowerShell)
+%   - "bash scripts/build.sh"          (POSIX / WSL / Git-Bash)
+%   - "latexmk -pdf -outdir=../build manuscript/main.tex"
+%
+% The output PDF is written to <repo-root>/build/main.pdf.
+% =============================================================================
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,nofootinbib,longbibliography,amsmath,amssymb,floatfix]{revtex4-2}
+
+% --- Preamble ---------------------------------------------------------------
+\input{preamble/packages}
+\input{preamble/macros}
+% Uncomment the next line to include optional files from manuscript/drafts/.
+% \showdrafttrue
+
+\begin{document}
+
+% --- Title block, authors, abstract -----------------------------------------
+\input{metadata}
+
+\maketitle
+
+% --- Main body --------------------------------------------------------------
+\input{sections/01_introduction}
+\input{sections/02_theory}
+\ifshowdraft
+  \input{drafts/02_theory_sketch}
+\fi
+\input{sections/03_results}
+\input{sections/04_discussion}
+\input{sections/05_conclusion}
+
+% --- Appendices -------------------------------------------------------------
+\appendix
+\input{appendices/A_conservation}
+\input{appendices/B_stability}
+\input{appendices/C_reproducibility}
+
+% --- Bibliography (apsrev4-2 style set in preamble/packages.tex) --------------
+\bibliography{bibliography/references}
+
+\end{document}

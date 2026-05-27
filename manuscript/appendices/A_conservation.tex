@@ -1,0 +1,172 @@
+% =============================================================================
+% A_conservation.tex -- Appendix A: Explicit derivation of covariant
+% conservation of the energy-momentum tensor.
+% =============================================================================
+
+\section{Explicit Derivation of Covariant Conservation}
+\label{app:conservation}
+
+It is verified that the symmetric energy--momentum tensor of Sec.~\ref{subsec:emt} satisfies the covariant conservation law $\nabla_\mu T^{\mu\nu}=0$ whenever the phase-locked Klein--Gordon (PLKG) equations of motion hold.
+The argument is the standard on-shell cancellation between second-order field terms arising from $\nabla_\mu T^{\mu\nu}$ and the explicit $\partial^\nu\mathcal{L}$ contribution.
+
+\subsection{Conventions and definitions}
+
+The mostly-plus signature used in Sec.~\ref{sec:theory} is adopted, together with the matter action $S=\int d^4x\,\sqrt{-g}\,\mathcal{L}$, and the metric stress tensor
+\begin{equation}
+T_{\mu\nu}=\frac{-2}{\sqrt{-g}}\frac{\delta S}{\delta g^{\mu\nu}} .
+\end{equation}
+For a scalar $\phi$, the covariant d'Alembertian is
+\begin{equation}
+\Box\phi\equiv\frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu\phi\right)
+=\nabla_\mu\partial^\mu\phi .
+\label{eq:box_def_app}
+\end{equation}
+
+\subsection{Lagrangian, equations of motion, and stress tensor}
+
+The total Lagrangian density matches Sec.~\ref{subsec:lagrangian} after expanding $\mathcal{L}=\mathcal{L}_{\mathrm{KG}}-V_{\mathrm{int}}$.
+It is convenient to package the symmetric mean-field interaction as $\mathcal{L}_{\mathrm{int}}$ and record the equivalent polar form:
+\begin{equation}
+\begin{aligned}
+\mathcal{L}_{\mathrm{int}}
+&\equiv\frac{K}{2N}\sum_{j,k=1}^N\left(\Phi_j\Phi_k^*+\Phi_j^*\Phi_k\right) ,\\
+\mathcal{L}
+&=-\sum_{j=1}^N\left[g^{\alpha\beta}(\partial_\alpha\Phi_j^*)(\partial_\beta\Phi_j)+m_j^2|\Phi_j|^2\right]
++\mathcal{L}_{\mathrm{int}} ,\\
+\mathcal{L}_{\mathrm{int}}
+&=-V_{\mathrm{int}}
+=\frac{K}{N}\sum_{j,k=1}^N\rho_j\rho_k\cos(\theta_k-\theta_j) ,
+\end{aligned}
+\label{eq:lagrangian_app_block}
+\end{equation}
+where $\Phi_j=\rho_j e^{i\theta_j}$.
+Variation with respect to the inverse metric yields
+\begin{equation}
+T_{\mu\nu}
+=\sum_{j=1}^N\left[(\partial_\mu\Phi_j^*)(\partial_\nu\Phi_j)+(\partial_\nu\Phi_j^*)(\partial_\mu\Phi_j)\right]
++g_{\mu\nu}\mathcal{L} ,
+\label{eq:Tmunu_explicit}
+\end{equation}
+which is the manifestly symmetric tensor quoted in Sec.~\ref{subsec:emt}.
+The Euler--Lagrange equations for each $\Phi_j$ take the coupled Klein--Gordon form
+\begin{equation}
+\Box\Phi_j-m_j^2\Phi_j+\frac{K}{N}\sum_{k=1}^N\Phi_k=0 ,
+\label{eq:EOM_app}
+\end{equation}
+and similarly for $\Phi_j^*$.
+Equivalently,
+\begin{equation}
+\nabla_\mu\partial^\mu\Phi_j=m_j^2\Phi_j-\frac{K}{N}\sum_{k=1}^N\Phi_k ,
+\label{eq:box_phi}
+\end{equation}
+\begin{equation}
+\nabla_\mu\partial^\mu\Phi_j^*=m_j^2\Phi_j^*-\frac{K}{N}\sum_{k=1}^N\Phi_k^* .
+\label{eq:box_phi_star}
+\end{equation}
+
+\subsection{Covariant divergence}
+
+Raising indices on \eqref{eq:Tmunu_explicit} gives
+\begin{equation}
+\begin{aligned}
+T^{\mu\nu}
+&=\sum_{j=1}^N\left[(\partial^\mu\Phi_j)(\partial^\nu\Phi_j^*)
++(\partial^\nu\Phi_j)(\partial^\mu\Phi_j^*)\right] \\
+&\quad+g^{\mu\nu}\mathcal{L} .
+\end{aligned}
+\end{equation}
+Using metric compatibility ($\nabla_\mu g^{\alpha\beta}=0$) and the Leibniz rule,
+\begin{align}
+\nabla_\mu T^{\mu\nu}
+&=\sum_{j=1}^N\Big[(\nabla_\mu\partial^\mu\Phi_j)(\partial^\nu\Phi_j^*)
++(\partial^\mu\Phi_j)(\nabla_\mu\partial^\nu\Phi_j^*) \nonumber\\
+&\quad+(\nabla_\mu\partial^\nu\Phi_j)(\partial^\mu\Phi_j^*)
++(\partial^\nu\Phi_j)(\nabla_\mu\partial^\mu\Phi_j^*)\Big] \nonumber\\
+&\quad+\partial^\nu\mathcal{L} .
+\label{eq:divT_expanded}
+\end{align}
+
+\subsection{Substitution of the equations of motion}
+
+Inserting \eqref{eq:box_phi} and \eqref{eq:box_phi_star} into \eqref{eq:divT_expanded} yields
+\begin{align}
+\nabla_\mu T^{\mu\nu}
+&=\sum_{j=1}^N m_j^2\Phi_j(\partial^\nu\Phi_j^*)
+-\frac{K}{N}\sum_{j,k=1}^N\Phi_k(\partial^\nu\Phi_j^*) \nonumber\\
+&\quad+\sum_{j=1}^N(\partial^\mu\Phi_j)(\nabla_\mu\partial^\nu\Phi_j^*)
++\sum_{j=1}^N(\nabla_\mu\partial^\nu\Phi_j)(\partial^\mu\Phi_j^*) \nonumber\\
+&\quad+\sum_{j=1}^N m_j^2(\partial^\nu\Phi_j)\Phi_j^*
+-\frac{K}{N}\sum_{j,k=1}^N(\partial^\nu\Phi_j)\Phi_k^* \nonumber\\
+&\quad+\partial^\nu\mathcal{L} .
+\label{eq:divT_substituted}
+\end{align}
+
+\subsection{Derivative of the Lagrangian and cancellations}
+
+Because each $\Phi_j$ is a scalar field, $\nabla_\mu\Phi_j=\partial_\mu\Phi_j$.
+$\partial^\nu\mathcal{L}$ is recorded as follows.
+\begin{align}
+\partial^\nu\mathcal{L}
+&=-\sum_{j=1}^N\Big[g^{\alpha\beta}(\partial^\nu\partial_\alpha\Phi_j^*)(\partial_\beta\Phi_j) \nonumber\\
+&\quad\;\;+g^{\alpha\beta}(\partial_\alpha\Phi_j^*)(\partial^\nu\partial_\beta\Phi_j) \nonumber\\
+&\quad+m_j^2\left(\Phi_j^*\partial^\nu\Phi_j+\Phi_j\partial^\nu\Phi_j^*\right)\Big]
++\partial^\nu\mathcal{L}_{\mathrm{int}} .
+\label{eq:dL_dnu}
+\end{align}
+For the interaction piece $\mathcal{L}_{\mathrm{int}}$ in \eqref{eq:lagrangian_app_block}, a straightforward differentiation gives
+\begin{equation}
+\begin{aligned}
+\partial^\nu\mathcal{L}_{\mathrm{int}}
+&=\frac{K}{2N}\sum_{j,k=1}^N\Big[(\partial^\nu\Phi_j)\Phi_k^*+\Phi_j(\partial^\nu\Phi_k^*) \\
+&\quad\;\;+(\partial^\nu\Phi_j^*)\Phi_k+\Phi_j^*(\partial^\nu\Phi_k)\Big] .
+\end{aligned}
+\label{eq:dLint_dnu}
+\end{equation}
+Relabeling the dummy indices $(j,k)$ in the second and fourth groups shows that the sum symmetrically factorizes,
+\begin{equation}
+\partial^\nu\mathcal{L}_{\mathrm{int}}
+=\frac{K}{N}\sum_{j,k=1}^N\left[\Phi_k^*(\partial^\nu\Phi_j)+\Phi_k(\partial^\nu\Phi_j^*)\right] .
+\label{eq:dLint_dnu_sym}
+\end{equation}
+
+\paragraph{Kinetic sector.}
+For scalar fields, metric compatibility implies the identity
+\begin{equation}
+\begin{aligned}
+&\sum_{j=1}^N\left[(\partial^\mu\Phi_j)(\nabla_\mu\partial^\nu\Phi_j^*)
++(\nabla_\mu\partial^\nu\Phi_j)(\partial^\mu\Phi_j^*)\right] \\
+&=\partial^\nu\left[\sum_{j=1}^Ng^{\mu\alpha}(\partial_\mu\Phi_j^*)(\partial_\alpha\Phi_j)\right] ,
+\end{aligned}
+\label{eq:kinetic_identity}
+\end{equation}
+which combines with the kinetic contribution inside \eqref{eq:dL_dnu} to cancel exactly.
+
+\paragraph{Mass sector.}
+The mass terms in \eqref{eq:divT_substituted} assemble into
+\begin{equation}
+\begin{aligned}
+&\sum_{j=1}^N\left[m_j^2\Phi_j(\partial^\nu\Phi_j^*)+m_j^2(\partial^\nu\Phi_j)\Phi_j^*\right] \\
+&=\partial^\nu\left[\sum_{j=1}^Nm_j^2|\Phi_j|^2\right] ,
+\end{aligned}
+\end{equation}
+which cancels the mass contribution in \eqref{eq:dL_dnu}.
+
+\paragraph{Interaction sector.}
+The mean-field terms in \eqref{eq:divT_substituted} contribute
+\begin{equation}
+\begin{aligned}
+&-\frac{K}{N}\sum_{j,k=1}^N\Big[\Phi_k(\partial^\nu\Phi_j^*) \\
+&\quad\;\;+\Phi_k^*(\partial^\nu\Phi_j)\Big] ,
+\end{aligned}
+\end{equation}
+which is precisely the negative of \eqref{eq:dLint_dnu_sym}.
+
+\subsection{Conclusion}
+
+Collecting the kinetic, mass, and interaction cancellations, every term in \eqref{eq:divT_substituted} is annihilated by the corresponding piece of \eqref{eq:dL_dnu}, so
+\begin{equation}
+\nabla_\mu T^{\mu\nu}=0
+\end{equation}
+on shell.
+
+This is the standard consequence of diffeomorphism invariance of the matter action (Noether's theorem for spacetime reparameterizations).

@@ -1,0 +1,34 @@
+% =============================================================================
+% macros.tex -- Custom macros shared by every section of the manuscript
+% Keep this file small and well documented; if a macro is only used in one
+% section, define it there instead.
+% =============================================================================
+
+% --- Operators ---------------------------------------------------------------
+\providecommand{\dalembert}{\Box}                 % d'Alembertian
+\providecommand{\Tr}{\operatorname{Tr}}           % trace
+\providecommand{\Real}{\operatorname{Re}}         % real part
+\providecommand{\Imag}{\operatorname{Im}}         % imaginary part
+
+% --- Common symbols of this paper -------------------------------------------
+\providecommand{\PLKG}{\text{PLKG}}               % Phase-Locked Klein-Gordon label
+\providecommand{\sync}{\text{sync}}               % synchronization subscript
+\providecommand{\intpot}{V_{\mathrm{int}}}        % interaction potential
+\providecommand{\meff}{m_{\mathrm{eff}}}          % effective mass
+
+% --- Convenience -------------------------------------------------------------
+\providecommand{\eqlabel}[1]{\label{eq:#1}}       % uniform equation labelling
+
+% --- PRD / APS citations (revtex4-2 + natbib) --------------------------------
+% Use ~\cite{key} for superscript numeric cites; use \onlinecite when the
+% reference number must appear inline (e.g., ``Refs.~\onlinecite{Hu2000}'').
+\providecommand{\Refcite}[1]{Ref.~\onlinecite{#1}}
+\providecommand{\Refscite}[1]{Refs.~\onlinecite{#1}}
+
+% --- Optional draft overlays --------------------------------------------------
+% When \showdrafttrue is active (see comments in main.tex), \input files under
+% manuscript/drafts/ may be spliced after their corresponding sections.
+% Default is off so submission/CI builds never include draft text.
+\newif\ifshowdraft
+\showdraftfalse
+%\showdrafttrue

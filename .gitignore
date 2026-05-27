@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# LaTeX intermediate / output artefacts
+# ---------------------------------------------------------------------------
+build/
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.synctex.gz
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+# ---------------------------------------------------------------------------
+# Generated figures (rebuildable from code/calc-*.py)
+# ---------------------------------------------------------------------------
+code/figures/
+manuscript/figures/*.pdf
+manuscript/figures/*.png
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env/
+.envrc
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini

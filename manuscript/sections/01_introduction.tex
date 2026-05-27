@@ -1,0 +1,32 @@
+% =============================================================================
+% 01_introduction.tex -- Introduction
+% =============================================================================
+
+\section{Introduction}
+\label{sec:introduction}
+
+Relativistic scalar fields are a standard ingredient in models of the early universe, late-time cosmology, and dark-sector physics.
+They enter both the simplest phenomenological descriptions of accelerated expansion and the microphysical sector of many extensions beyond the concordance model~\cite{Guth1981,Planck2018}.
+Their stress--energy tensor sources the Friedmann equations, so the detailed evolution of a scalar (or a collection of scalars) feeds directly into the expansion history and into the growth of large-scale structure.
+
+The covariant dynamics of a free spin-$0$ field of mass $m$ are governed by the Klein--Gordon equation, which reduces to the familiar wave equation in the massless limit and generalizes the non-relativistic Schr\"odinger description when appropriate identifications are made.
+Complex fields carry a conserved global $U(1)$ current in the minimal coupling case, whereas real scalars describe neutral degrees of freedom; both settings are widely used in quantum field theory on curved backgrounds and in phenomenological cosmology~\cite{Suarez2015}.
+Hydrodynamic or polar (amplitude--phase) rewritings of wave equations have a long history: the Madelung transformation recasts linear Schr\"odinger dynamics into continuity and Euler-type equations for a probability density and a velocity potential~\cite{Madelung1927}, and analogous polar decompositions of relativistic scalar equations are used to study semiclassical limits, stability, and the gravitational back-reaction of field gradients and ``quantum pressure'' terms~\cite{Suarez2015}.
+
+In cosmology, light scalars with $m \sim H_0$ or lighter appear in models of dynamical dark energy, and still lighter masses ($m \ll H_0$ today) define the fuzzy dark matter scenario in which the de~Broglie wavelength of the field influences structure on astrophysical scales~\cite{Hu2000,Marsh2016}.
+Precision data are commonly interpreted within $\Lambda$CDM or close extensions thereof~\cite{Planck2018}, but scalar-field frameworks remain a flexible language for mapping microphysical Lagrangians onto observable signatures in the expansion rate and in density perturbations.
+
+Separately from relativistic field theory, coupled nonlinear oscillators provide a paradigm for collective synchronization: many weakly interacting units can evolve toward partially or fully phase-locked states.
+The textbook Kuramoto model and its continuum limits capture this phenomenon with minimal structure and have been extended in numerous directions across physics and biology~\cite{Kuramoto1984,Strogatz2000,Acebron2005}.
+Field-theoretic models of globally coupled phases also appear in condensed matter and statistical mechanics, but it is less common to embed Kuramoto-like \emph{sinusoidal} phase coupling directly into a relativistic matter action in a way that modifies both the local equations of motion and the stress--energy tensor that enters Einstein's equations.
+
+In this work, a phase-locked multi-field Klein--Gordon construction is proposed and analyzed: $N$ complex scalar fields in a flat Friedmann--Lema\^{\i}tre--Robertson--Walker (FLRW) background, with a symmetric interaction potential engineered so that, in a polar decomposition $\Phi_j = \rho_j e^{i\theta_j}$, the interaction reduces to Kuramoto-type cosine couplings $\cos(\theta_k-\theta_j)$ weighted by amplitudes $\rho_j\rho_k$.
+This framework is referred to as Phase-Locked Klein--Gordon (PLKG) dynamics.
+The interaction breaks independent $U(1)$ phase rotations $\Phi_j \to e^{i\alpha_j}\Phi_j$, so the per-field Noether currents are not conserved separately, whereas the total current for a common phase $\Phi_j \to e^{i\alpha}\Phi_j$ remains conserved; the model can therefore redistribute ``phase charge'' among fields and drive mean-field synchronization.
+Starting from a first-principles Lagrangian, the coupled amplitude and phase equations are derived without dropping spatio-temporal derivatives, the energy--momentum tensor is computed, and a regime is identified in which coherent phase motion contributes an effective stiff-like component to the stress tensor, thereby modifying the gravitational potential sourced by the matter sector relative to the standard Klein--Gordon case.
+
+The remainder of the paper is organized as follows.
+Section~\ref{sec:theory} presents the Lagrangian, covariant equations of motion, polar decomposition, and stress--energy tensor, including the continuum (kinetic) limit.
+Section~\ref{sec:results} summarizes key structural results of the coupled dynamics.
+Section~\ref{sec:discussion} discusses physical implications and limitations.
+Conservation laws and stability considerations are collected in Appendices~\ref{app:conservation} and~\ref{app:stability}.

@@ -1,0 +1,340 @@
+% =============================================================================
+% 02_theory.tex -- Theoretical background
+% Lagrangian formulation, covariant equations of motion, polar decomposition,
+% the energy-momentum tensor, and the continuum (kinetic) limit.
+% =============================================================================
+
+\section{Theoretical Background}
+\label{sec:theory}
+
+\subsection{The Lagrangian Formulation}
+\label{subsec:lagrangian}
+
+The cornerstone of our approach is to construct a Lagrangian density whose equations of motion will yield the desired dynamics. We consider $N$ complex scalar fields, $\Phi_j(x^\mu)$, in a flat Friedmann-Lema\^{\i}tre-Robertson-Walker (FLRW) spacetime described by the metric
+\begin{equation}
+ds^2 = dt^2 - a(t)^2 d\mathbf{x}^2 = g_{\mu\nu}dx^\mu dx^\nu .
+\end{equation}
+In the local galactic frame, one may employ spherical coordinates $(r, \theta, \phi)$ to exploit the system's symmetry, such that the metric takes the form:
+\begin{equation}
+ds^2 = dt^2 - a(t)^2 [dr^2 + r^2(d\theta^2 + \sin^2\theta d\phi^2)] .
+\end{equation}
+Consequently, all spatial derivatives in the subsequent field equations are evaluated with respect to this curvilinear geometry, though for clarity we write the flat-space Laplacian as $\nabla^2$ in Cartesian form.
+
+The standard Lagrangian density for $N$ free, massive, complex scalar fields is:
+\begin{equation}
+    \mathcal{L}_{\text{KG}} = -\sum_{j=1}^N \left( g^{\mu\nu} (\partial_\mu \Phi_j^*) (\partial_\nu \Phi_j) + m_j^2 |\Phi_j|^2 \right) .
+\end{equation}
+
+Now, we must introduce an interaction potential, $V_{\text{int}}$, that generates the Kuramoto-like coupling.\footnote{In the complex-field basis the symmetric interaction is a \emph{linear} mass-mixing term in each equation of motion, $\Box\Phi_i - m_i^2\Phi_i + (K/N)\sum_k\Phi_k=0$, distinct from the nonlinear all-to-all sine coupling of the classical Kuramoto model on an oscillator network. In polar variables the potential still drives phase alignment; in the overdamped limit $3H \gg \mathrm{d}/\mathrm{d}t$ of the phase sector, the evolution reduces to Kuramoto-type relaxation, while the underlying covariant coupling remains this quadratic mass-mixing structure in $\mathcal{L}$.}
+The Kuramoto model's dynamics are driven by terms of the form $\sin(\theta_k - \theta_j)$. In terms of our complex fields
+\begin{equation}
+\Phi_j = \rho_j e^{i\theta_j}
+\end{equation}
+we can construct such a term from the imaginary part of
+\begin{equation}
+\Phi_k \Phi_j^* = \rho_k \rho_j e^{i(\theta_k - \theta_j)} .
+\end{equation}
+
+A suitable, simple, and symmetric interaction potential that achieves this is:
+\begin{equation}
+    \begin{aligned}
+        V_{\text{int}}(\Phi_1, \dots, \Phi_N)
+        &= -\frac{K}{2N} \sum_{j,k=1}^N (\Phi_j \Phi_k^* + \Phi_j^* \Phi_k) \\
+        &= -\frac{K}{N} \sum_{j,k=1}^N \text{Re}(\Phi_j \Phi_k^*) .
+    \end{aligned}
+\end{equation}
+
+In the amplitude-phase representation, this potential becomes:
+\begin{equation}
+    V_{\text{int}} = -\frac{K}{N} \sum_{j,k=1}^N \rho_j \rho_k \cos(\theta_k - \theta_j) .
+\end{equation}
+
+The total Lagrangian density for the coupled system is
+\begin{equation}
+\mathcal{L} = \mathcal{L}_{\text{KG}} - V_{\text{int}} ,
+\end{equation}
+or explicitly
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L} &= -\sum_{j=1}^N \left( g^{\mu\nu} \partial_\mu \Phi_j^* \partial_\nu \Phi_j + m_j^2 |\Phi_j|^2 \right) \\
+        &\quad + \frac{K}{2N} \sum_{j,k=1}^N (\Phi_j \Phi_k^* + \Phi_j^* \Phi_k) .
+    \end{aligned}
+\end{equation}
+
+It is important to note that $V_{\text{int}}$ is invariant under the simultaneous global $U(1)$ transformation $\Phi_j \to e^{i\alpha}\Phi_j$ (the same $\alpha$ for all $j$), which ensures conservation of the total Noether current $J^\mu = i\sum_j(\Phi_j^*\partial^\mu\Phi_j - \Phi_j\partial^\mu\Phi_j^*)$.
+However, $V_{\text{int}}$ explicitly breaks the independent $U(1)$ symmetry $\Phi_j \to e^{i\alpha_j}\Phi_j$ (independent $\alpha_j$ for each $j$).
+Consequently, while the total current is conserved ($\nabla_\mu J^\mu = 0$), the individual currents $J_j^\mu = i(\Phi_j^*\partial^\mu\Phi_j - \Phi_j\partial^\mu\Phi_j^*)$ are not conserved separately.
+This explicit breaking of individual phase symmetry is the field-theoretic origin of the synchronization mechanism: it permits the exchange of ``phase charge'' among the $N$ fields, driving them toward a common coherent state while conserving the total charge.
+
+\subsection{The Covariant Equation of Motion}
+\label{subsec:eom}
+
+The dynamics are derived from the covariant Euler-Lagrange equation for each field $\Phi_i^*$, which in a curved spacetime with metric determinant $g$ reads:
+\begin{equation}
+    \frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,\frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi_i^*)}\right)
+    = \frac{\partial\mathcal{L}}{\partial\Phi_i^*} .
+\end{equation}
+The requisite partial derivatives of the Lagrangian density are:
+\begin{enumerate}
+    \item $\displaystyle \frac{\partial\mathcal{L}}{\partial(\partial_\mu\Phi_i^*)} = -g^{\mu\nu}\partial_\nu\Phi_i$
+    \item $\displaystyle \frac{\partial\mathcal{L}}{\partial\Phi_i^*} = -m_i^2\Phi_i + \frac{K}{2N}\sum_{j,k=1}^N(\delta_{ij}\Phi_k + \delta_{ik}\Phi_j) = -m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k$
+\end{enumerate}
+Substituting these into the Euler-Lagrange equation gives
+\begin{equation}
+    -\frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu\Phi_i\right)
+    = -m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k .
+\end{equation}
+The expression in parentheses is, by definition, the covariant d'Alembertian operator acting on $\Phi_i$,
+\begin{equation}
+    \Box\Phi_i \equiv \frac{1}{\sqrt{-g}}\,\partial_\mu\!\left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu\Phi_i\right) ,
+\end{equation}
+so the Euler-Lagrange equation becomes
+\begin{equation}
+    -\Box\Phi_i = -m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k ,
+\end{equation}
+and therefore the correct equation of motion for the canonical sign convention is
+\begin{equation}
+    {
+    \Box\Phi_i - m_i^2\Phi_i + \frac{K}{N}\sum_{k=1}^N\Phi_k = 0
+    } .
+\end{equation}
+This is a system of $N$ coupled Klein-Gordon equations. The Kuramoto interaction manifests as a mean-field coupling, and the Hubble friction is automatically encoded in the covariant d'Alembertian through the factor $\sqrt{-g}=a^3(t)$.
+
+\subsection{Decomposition into Amplitude and Phase}
+\label{subsec:polar}
+
+This is where the rich dynamics become apparent. We substitute $\Phi_j = \rho_j(x^\mu) e^{i\theta_j(x^\mu)}$ into the equation of motion. The d'Alembertian in an FLRW spacetime is $\Box = \frac{\partial^2}{\partial t^2} + 3H(t) \frac{\partial}{\partial t} - \frac{1}{a(t)^2}\nabla^2$, where $H = \dot{a}/a$ is the Hubble parameter and $\nabla^2$ is the flat-space Laplacian.
+
+Let's expand $\Box \Phi_i$:
+\begin{equation}
+    \begin{aligned}
+        \Box \Phi_i = \Box (\rho_i e^{i\theta_i})
+        = e^{i\theta_i} &\left[ (\Box \rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i \partial_\nu\theta_i) \right. \\
+        &\left. + i(2g^{\mu\nu}\partial_\mu\rho_i \partial_\nu\theta_i + \rho_i \Box \theta_i) \right] .
+    \end{aligned}
+\end{equation}
+The full equation becomes:
+\begin{equation}
+    \begin{aligned}
+        e^{i\theta_i} \Big[ &(\Box \rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i \partial_\nu\theta_i + m_i^2\rho_i) \\
+        &+ i(2g^{\mu\nu}\partial_\mu\rho_i \partial_\nu\theta_i + \rho_i \Box \theta_i) \Big] \\
+        &- \frac{K}{N} \sum_{k=1}^N \rho_k e^{i\theta_k} = 0 .
+    \end{aligned}
+\end{equation}
+Multiplying by $e^{-i\theta_i}$:
+\begin{multline}
+    (\Box \rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i \partial_\nu\theta_i + m_i^2\rho_i) + i(2g^{\mu\nu}\partial_\mu\rho_i \partial_\nu\theta_i + \rho_i \Box \theta_i) \\ - \frac{K}{N} \sum_{k=1}^N \rho_k e^{i(\theta_k - \theta_i)} = 0 .
+\end{multline}
+Now, we separate the real and imaginary parts.
+
+\subsection*{Equation for the Amplitude ($\rho_i$)}
+This comes from the real part of the equation:
+\begin{equation}
+    \begin{aligned}
+        \Box \rho_i - \rho_i g^{\mu\nu}\partial_\mu\theta_i \partial_\nu\theta_i + m_i^2\rho_i
+        - \frac{K}{N} \sum_{k=1}^N \rho_k \cos(\theta_k - \theta_i) = 0 .
+    \end{aligned}
+\end{equation}
+Substituting the FLRW form of the d'Alembertian and the metric:
+\begin{equation}
+    {
+    \begin{aligned}
+        \ddot{\rho_i} + 3H\dot{\rho_i} - \frac{1}{a^2}\nabla^2\rho_i
+        &- \rho_i \left( \dot{\theta_i}^2 - \frac{1}{a^2}(\nabla\theta_i)^2 \right) + m_i^2\rho_i \\
+        &= \frac{K}{N} \sum_{k=1}^N \rho_k \cos(\theta_k - \theta_i) .
+    \end{aligned}
+    } \tag{14} \label{eq:14}
+\end{equation}
+
+\subsection*{Equation for the Phase ($\theta_i$)}
+This comes from the imaginary part:
+\begin{equation}
+    2g^{\mu\nu}\partial_\mu\rho_i \partial_\nu\theta_i + \rho_i \Box \theta_i
+    - \frac{K}{N} \sum_{k=1}^N \rho_k \sin(\theta_k - \theta_i) = 0 ,
+\end{equation}
+which, when expanded, gives:
+\begin{equation}
+    {
+    \begin{aligned}
+        2\left(\dot{\rho_i}\dot{\theta_i} - \frac{1}{a^2}\nabla\rho_i\cdot\nabla\theta_i\right)
+        &+ \rho_i\left(\ddot{\theta_i} + 3H\dot{\theta_i} - \frac{1}{a^2}\nabla^2\theta_i\right) \\
+        &= \frac{K}{N} \sum_{k=1}^N \rho_k \sin(\theta_k - \theta_i) .
+    \end{aligned}
+    } \tag{16} \label{eq:16}
+\end{equation}
+
+\subsection{Summary and Interpretation}
+\label{subsec:summary}
+
+The final derived equations, \eqref{eq:14} and \eqref{eq:16}, constitute a coupled system of non-linear partial differential equations for the amplitudes $\rho_i(t, \mathbf{x})$ and phases $\theta_i(t, \mathbf{x})$.
+
+Equation~\eqref{eq:14} is a relativistic wave equation for the amplitude $\rho_i$. Note the effective potential term depends on the dynamics of the phase, and the driving term depends on the cosine of the phase differences. Equation~\eqref{eq:16} is the generalized, relativistic Kuramoto equation: a second-order wave equation for the phase field $\theta_i$.
+
+\subsection{Connection to the Classic Kuramoto Model}
+\label{subsec:kuramoto-limit}
+
+To recover the familiar Kuramoto model, one must take a specific limit:
+\begin{enumerate}
+    \item \textbf{Homogeneity:} Neglect all spatial derivatives ($\nabla=0$).
+    \item \textbf{Fixed Amplitude:} Assume the amplitudes are constant, $\rho_i(t) = \rho_0$, so $\dot{\rho_i}=0$ and $\ddot{\rho_i}=0$.
+    \item \textbf{Overdamped/Non-relativistic Limit:} Assume the dynamics are dominated by friction and the second-order time derivative of the phase is negligible ($\ddot{\theta_i} \approx 0$). In our cosmological case, the Hubble friction term $3H\dot{\theta_i}$ can play this role.
+\end{enumerate}
+Under these assumptions, the phase equation simplifies dramatically:
+\begin{align*}
+    \rho_0(3H\dot{\theta_i}) &\approx \frac{K}{N} \sum_{k=1}^N \rho_0 \sin(\theta_k - \theta_i) \\
+    \implies \dot{\theta_i} &\approx \frac{K}{3HN} \sum_{k=1}^N \sin(\theta_k - \theta_i) .
+\end{align*}
+This is precisely the form of the Kuramoto model for identical oscillators, where the effective coupling constant is modulated by the expansion rate of the universe. This provides a clear field-theoretic and cosmological foundation for synchronization phenomena.
+
+\subsection{The Energy-Momentum Tensor and Gravitational Coupling}
+\label{subsec:emt}
+
+To determine how the coupled scalar fields source the background geometry, we derive the symmetric energy-momentum tensor by varying the matter action with respect to the inverse metric. Adopting the same scalar-field sector as in Sec.~\ref{subsec:lagrangian}, $\mathcal{L}=\mathcal{L}_{\mathrm{KG}}-V_{\mathrm{int}}$,
+\begin{equation}
+    \mathcal{L}
+    = -\sum_{j=1}^N g^{\mu\nu}(\partial_\mu \Phi_j^*)(\partial_\nu \Phi_j)
+    - \sum_{j=1}^N m_j^2 |\Phi_j|^2 - V_{\mathrm{int}} ,
+\end{equation}
+the energy-momentum tensor is defined by
+\begin{equation}
+    T_{\mu\nu} \equiv \frac{-2}{\sqrt{-g}}\frac{\delta S}{\delta g^{\mu\nu}} .
+\end{equation}
+Since the metric is symmetric, one has
+\begin{equation}
+    \frac{\partial\mathcal{L}}{\partial g^{\mu\nu}}
+    = -\frac{1}{2}\sum_{j=1}^N \left[(\partial_\mu\Phi_j^*)(\partial_\nu\Phi_j)
+    + (\partial_\nu\Phi_j^*)(\partial_\mu\Phi_j)\right] ,
+\end{equation}
+so that the full energy-momentum tensor reads
+\begin{equation}
+    \begin{aligned}
+        T_{\mu\nu} = \sum_{j=1}^N \Big[ &(\partial_\mu\Phi_j^*)(\partial_\nu\Phi_j)
+        + (\partial_\nu\Phi_j^*)(\partial_\mu\Phi_j) \Big] \\
+        &+ g_{\mu\nu}\mathcal{L} .
+    \end{aligned}
+\end{equation}
+This expression is manifestly symmetric and separates naturally into amplitude and phase contributions in the polar decomposition $\Phi_j = \rho_j e^{i\theta_j}$.
+
+\subsubsection*{Energy density}
+
+The energy density measured by a comoving observer is $\rho_{\mathrm{tot}} \equiv T_{00}$ (we write $\rho_{\mathrm{tot}}$ here to avoid confusion with the field amplitude $\rho_j$). Using $\Phi_j=\rho_j e^{i\theta_j}$ we obtain
+\begin{equation}
+    |\dot{\Phi}_j|^2 = \dot{\rho}_j^{\,2} + \rho_j^2\dot{\theta}_j^{\,2},
+    \qquad
+    |\nabla\Phi_j|^2 = (\nabla\rho_j)^2 + \rho_j^2(\nabla\theta_j)^2,
+\end{equation}
+and therefore, since $T_{00}=\sum_j\big[(\partial_0\Phi_j^*)(\partial_0\Phi_j)+(\partial_0\Phi_j)(\partial_0\Phi_j^*)\big]+\mathcal{L}$,
+\begin{equation}
+    {
+    \begin{aligned}
+        \rho_{\mathrm{tot}} = \sum_{j=1}^N \Bigg[ &\dot{\rho}_j^{\,2}
+        + \rho_j^2\dot{\theta}_j^{\,2}
+        + \frac{1}{a^2}\Big((\nabla\rho_j)^2
+        + \rho_j^2(\nabla\theta_j)^2\Big) \\
+        &- m_j^2\rho_j^2 \Bigg]
+        - V_{\mathrm{int}} .
+    \end{aligned}
+    }
+\end{equation}
+For the Kuramoto interaction adopted here, this becomes
+\begin{equation}
+    {
+    \begin{aligned}
+        \rho_{\mathrm{tot}} = \sum_{j=1}^N \Bigg[ &\dot{\rho}_j^{\,2}
+        + \rho_j^2\dot{\theta}_j^{\,2}
+        + \frac{1}{a^2}\Big((\nabla\rho_j)^2
+        + \rho_j^2(\nabla\theta_j)^2\Big) \\
+        &- m_j^2\rho_j^2 \Bigg]
+        + \frac{K}{N}\sum_{j,k=1}^N \rho_j\rho_k\cos(\theta_k-\theta_j) .
+    \end{aligned}
+    }
+\end{equation}
+The kinetic and gradient contributions combine with the mass term as shown, while the final cosine term is the interaction energy induced by phase synchronization.
+
+\subsubsection*{Pressure}
+
+For a spatially homogeneous and isotropic configuration the pressure is $p=\frac{1}{3}g^{ij}T_{ij}$. When all spatial gradients vanish, the $(\partial_i\Phi_j^*)(\partial_j\Phi_j)+\mathrm{c.c.}$ contributions to $T_{ij}$ vanish, so $T_{ij}=g_{ij}\mathcal{L}$ and therefore $g^{ij}T_{ij}=g^{ij}g_{ij}\mathcal{L}=3\mathcal{L}$, i.e.
+\begin{equation}
+    p=\mathcal{L}.
+\end{equation}
+Equivalently, one may expand the result as
+\begin{equation}
+    {
+    \begin{aligned}
+        p = -\sum_{j=1}^N \Big( &\dot{\rho}_j^{\,2}
+        + \rho_j^2\dot{\theta}_j^{\,2}
+        + m_j^2\rho_j^2 \Big)
+        - V_{\mathrm{int}} .
+    \end{aligned}
+    }
+\end{equation}
+For the Kuramoto interaction, $-V_{\mathrm{int}}$ again produces the same cosine combination as in $\rho_{\mathrm{tot}}$, so in the homogeneous limit the interaction enters $\rho_{\mathrm{tot}}$ and $p$ with the same sign through $\mathcal{L}$. Away from homogeneity, $p=\frac{1}{3}g^{ij}T_{ij}$ must be computed from the full $T_{ij}$, including the $(\partial_i\Phi_j^*)(\partial_j\Phi_j)+\mathrm{c.c.}$ terms.
+
+\subsubsection*{Modified Friedmann equations}
+
+With the above $\rho_{\mathrm{tot}}$ and $p$, the background expansion is governed by the standard Friedmann equations,
+\begin{align}
+    H^2 &= \frac{8\pi G}{3}\,\rho_{\mathrm{tot}} ,\\[4pt]
+    \dot{H} &= -4\pi G\,(\rho_{\mathrm{tot}} + p) ,
+\end{align}
+where $\rho_{\mathrm{tot}}$ and $p$ now contain the phase-synchronization terms. Consequently, the Kuramoto coupling $K$ enters the Hubble parameter both directly (through $\rho_{\mathrm{tot}}$) and indirectly (by altering the dynamical evolution of $\rho_j$ and $\theta_j$ via Eqs.~\eqref{eq:14} and \eqref{eq:16}). The covariant conservation equation $\nabla_\mu T^{\mu\nu}=0$ is not independent; it is identically satisfied when the phase-locked Klein--Gordon (PLKG) equations of motion hold.
+
+Having established the covariant PLKG framework and derived the energy-momentum tensor, we now turn to the physical consequences of these equations. A crucial distinction is that the bare interaction potential $V_{\text{int}}$ is vacuum-like when viewed in isolation, whereas the coherent synchronized regime of the full PLKG dynamics behaves effectively as a stiff component when the conserved synchronization energy is dominated by phase-kinetic stiffness. This distinction is central to the physical interpretation of the model and its implications for structure formation.
+
+\subsection{Continuum Limit and Integral Formulation}
+\label{subsec:continuum}
+
+To describe a realistic galactic halo with a continuous spectrum of field states, we extend the discrete $N$-field PLKG model to its thermodynamic limit ($N \to \infty$). Let $\omega$ parameterize the continuous spectrum of the scalar fields (e.g., intrinsic frequencies or masses), governed by a probability density function $g(\omega)$ such that $\int g(\omega) d\omega = 1$.
+
+The discrete interaction potential is replaced by a double integral over the parameter space:
+\begin{equation}
+    \begin{aligned}
+        V_{\text{int}} = -K \iint &\rho(x, t; \omega) \, \rho(x, t; \omega') \\
+        &\times \cos\!\bigl(\theta(x, t; \omega') - \theta(x, t; \omega)\bigr) \, g(\omega) \, g(\omega') \, d\omega \, d\omega'
+    \end{aligned}
+\end{equation}
+where $\rho$ and $\theta$ are the amplitude and phase of the field $\Phi(x,t;\omega) = \rho(x,t;\omega) e^{i\theta(x,t;\omega)}$.
+
+To simplify the mean-field dynamics, we define the macroscopic order parameter $R(x,t) e^{i\Theta(x,t)}$, which averages the continuous fields over the distribution $g(\omega)$:
+\begin{equation}
+    R(x,t) e^{i\Theta(x,t)} = \int \rho(x,t; \omega') e^{i\theta(x,t; \omega')} g(\omega') \, d\omega'
+\end{equation}
+
+Applying the Euler-Lagrange equations to the total action with respect to $\Phi^*(x,t;\omega)$ in a flat FLRW background, the discrete summations naturally transition into integrals. By separating the resulting covariant equation into its real and imaginary parts, we obtain the coupled integro-differential equations for the amplitude and phase:
+
+\textbf{Amplitude Equation:}
+\begin{equation}
+    \begin{aligned}
+        \ddot{\rho}_\omega + 3H\dot{\rho}_\omega - \frac{\nabla^2\rho_\omega}{a^2}
+        &+ \left( m_\omega^2 - \dot{\theta}_\omega^2 + \frac{(\nabla\theta_\omega)^2}{a^2} \right)\rho_\omega \\
+        &= K \int \rho_{\omega'} \cos(\theta_{\omega'} - \theta_\omega) g(\omega') \, d\omega'
+    \end{aligned}
+\end{equation}
+
+\textbf{Phase Equation:}
+\begin{equation}
+    \begin{aligned}
+        \rho_\omega \left(\ddot{\theta}_\omega + 3H\dot{\theta}_\omega - \frac{\nabla^2\theta_\omega}{a^2}\right)
+        &+ 2\left(\dot{\rho}_\omega\dot{\theta}_\omega - \frac{\nabla\rho_\omega\cdot\nabla\theta_\omega}{a^2}\right) \\
+        &= K \int \rho_{\omega'} \sin(\theta_{\omega'} - \theta_\omega) g(\omega') \, d\omega'
+    \end{aligned}
+\end{equation}
+
+By utilizing the definition of the macroscopic order parameter, the integral terms on the right-hand side can be compactly rewritten, effectively coupling each individual field state $\omega$ to the mean field:
+\begin{equation}
+    \begin{aligned}
+        \ddot{\rho}_\omega + 3H\dot{\rho}_\omega - \frac{\nabla^2\rho_\omega}{a^2}
+        &+ \left( m_\omega^2 - \dot{\theta}_\omega^2 + \frac{(\nabla\theta_\omega)^2}{a^2} \right)\rho_\omega \\
+        &= K R \cos(\Theta - \theta_\omega)
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \rho_\omega \left(\ddot{\theta}_\omega + 3H\dot{\theta}_\omega - \frac{\nabla^2\theta_\omega}{a^2}\right)
+        &+ 2\left(\dot{\rho}_\omega\dot{\theta}_\omega - \frac{\nabla\rho_\omega\cdot\nabla\theta_\omega}{a^2}\right) \\
+        &= K R \sin(\Theta - \theta_\omega)
+    \end{aligned}
+\end{equation}
+
+This continuum formulation transforms the system from a rigid set of discrete coupled PDEs into a mean-field kinetic framework. It provides a more robust physical picture of the dark matter surrogate, treating the galactic halo as an infinite-dimensional synchronized fluid rather than a finite collection of discrete scalar modes.

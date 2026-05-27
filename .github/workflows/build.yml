@@ -1,0 +1,55 @@
+name: build-paper
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r code/requirements.txt
+
+      - name: Install TeX Live (revtex / PRD)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-publishers \
+            texlive-science \
+            texlive-fonts-recommended
+
+      - name: Regenerate figures
+        run: python scripts/build_figures.py
+
+      - name: Compile manuscript
+        run: bash scripts/build.sh --skip-figures
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-pdf
+          path: build/main.pdf
+          if-no-files-found: error
+
+      - name: Upload figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: manuscript/figures/*
+          if-no-files-found: warn

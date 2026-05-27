@@ -1,0 +1,84 @@
+% =============================================================================
+% C_reproducibility.tex -- Appendix C: Reproducing numerical figures and builds
+% Do NOT issue a second \appendix here -- main.tex already declares it once.
+% =============================================================================
+
+\section{Reproducing the numerical figures}
+\label{app:reproducibility}
+
+All plots in Secs.~\ref{sec:results} and~\ref{sec:discussion} are produced by
+deterministic Python scripts in the repository directory \texttt{code/}, named
+\texttt{calc-01.py} through \texttt{calc-10.py}.
+Each script seeds its random number generators so that regenerated PDFs match
+the versions checked into \texttt{manuscript/figures/} when the same defaults
+are used.
+The catalogue in \texttt{code/README.md} maps each script to its figure file and
+manuscript section.
+
+\subsection{Software requirements}
+
+From the repository root, install Python~3.10 or newer and the pinned
+dependencies:
+\begin{verbatim}
+python -m pip install -r code/requirements.txt
+\end{verbatim}
+A TeX distribution with \texttt{pdflatex} and \texttt{bibtex} is required only
+if the full manuscript PDF is to be rebuilt (not for figure generation alone).
+
+\subsection{Regenerating every figure}
+
+The driver \texttt{scripts/build\_figures.py} executes every
+\texttt{code/calc-*.py} in sorted order, writes \texttt{code/figures/figure\_N.pdf}
+(and matching \texttt{.png} previews), and copies each PDF into
+\texttt{manuscript/figures/} for \verb|\includegraphics|.
+Equivalent entry points are \texttt{make figures} on POSIX systems and
+\begin{verbatim}
+python scripts/build_figures.py
+\end{verbatim}
+from the repository root on any platform.
+To rebuild a single figure, pass the script stem, for example
+\begin{verbatim}
+python scripts/build_figures.py calc-03
+\end{verbatim}
+
+\subsection{Running one script interactively}
+
+Each \texttt{calc-*.py} accepts a common command-line interface.
+From the repository root, a typical invocation is
+\begin{verbatim}
+python code/calc-01.py --out code/figures/figure_1 --format pdf,png
+\end{verbatim}
+Optional flags include \texttt{--show} for an interactive Matplotlib window and
+\texttt{--format} to restrict output types.
+Script-specific options (for example \texttt{--gravity none|external|self} on
+\texttt{calc-09.py}) are documented in the docstring at the top of each file.
+
+\subsection{Physical Review figure geometry (\texttt{--prd-width})}
+
+Before \verb|\includegraphics| scaling in the two-column \emph{Physical Review D}
+layout, the Matplotlib canvas should match the intended float width.
+Every figure script therefore accepts
+\begin{verbatim}
+--prd-width column|full
+\end{verbatim}
+where \texttt{column} sets the approximate single-column width in inches and
+\texttt{full} sets the approximate two-column (\texttt{figure*}) width.
+The manuscript build pipeline passes widths consistent with the float type of
+each figure; when regenerating locally, choose \texttt{column} for
+\texttt{figure} environments and \texttt{full} for \texttt{figure*} environments
+so that font sizes and aspect ratios remain comparable to the published PDF.
+
+\subsection{Building the manuscript PDF}
+
+After figures are present under \texttt{manuscript/figures/}, compile from the
+repository root with any of
+\begin{verbatim}
+make
+pwsh scripts/build.ps1
+bash scripts/build.sh
+\end{verbatim}
+The output is written to \texttt{build/main.pdf}.
+Use \texttt{make figures} (or \texttt{python scripts/build\_figures.py}) before
+the LaTeX step whenever a \texttt{calc-*.py} file has changed.
+For text-only edits, \texttt{scripts/build.ps1 -SkipFigures} or
+\texttt{bash scripts/build.sh --skip-figures} skips the numerics pass.
